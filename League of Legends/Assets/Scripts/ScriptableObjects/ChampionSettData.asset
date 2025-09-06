@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b2934cda310594c84e912f796f27f3, type: 3}
+  m_Name: ChampionSettData
+  m_EditorClassIdentifier: Assembly-CSharp::ChampionStatData
+  BaseHP: 0
+  HPGrowth: 0
+  BaseHPRegen: 0
+  BaseAR: 0
+  ARGrowth: 0
+  BaseMR: 0
+  MRGrowth: 0
+  BaseMS: 0
+  CritRate: 0
+  CritDamage: 0
+  BaseAD: 0
+  ADGrowth: 0
+  BaseAS: 0
+  ASGrowth: 0
+  BaseMana: 0
+  ManaGrowth: 0
+  BaseManaRegen: 0
+  BaseEnergy: 0
+  EnergyGrowth: 0
+  BaseEnergyRegen: 0
+  BaseFury: 0
+  FuryGrowth: 0
+  BaseFuryRegen: 0
+  BaseAnger: 0
+  AngerGrowth: 0
+  BaseAngerRegen: 0
+  BaseShield: 0
+  ShieldGrowth: 0
+  BaseShieldRegen: 0
+  BaseFerocity: 0
+  FerocityGrowth: 0
+  BaseFerocityRegen: 0
+  BaseFlow: 0
+  FlowGrowth: 0
+  BaseFlowRegen: 0
+  BaseBloodWell: 0
+  BloodWellGrowth: 0
+  BaseBloodWellRegen: 0
+  Basefrenzy: 0
+  FrenzyGrowth: 0
+  BaseFrenzyRegen: 0
+  BaseHeat: 0
+  HeatGrowth: 0
+  BaseHeatRegen: 0
+  BaseGrit: 0
+  GritGrowth: 0
+  BaseGritRegen: 0
+  BaseStyle: 0
+  StyleGrowth: 0
+  BaseStyleRegen: 0
+  baseMoonLight: 0
+  MoonLightGrowth: 0
+  BaseMoonLightRegen: 0
+  BaseAmmo: 0
+  AmmoGrowth: 0
+  BaseAmmoRegen: 0
+  BaseCountdown: 0
+  CountDownGrowth: 0
+  BaseCountdownRegen: 0
+  BaseStep: 0
+  StepGrowth: 0
+  BaseStepRegen: 0
+  Prefab: {fileID: 0}
