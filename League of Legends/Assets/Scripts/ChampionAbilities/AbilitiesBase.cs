@@ -2,6 +2,8 @@ using UnityEngine;
 
 public abstract class AbilitiesBase
 {
+    
+
     // --- Basic Info ---
     public string AbilityName { get; protected set; }
     public Champion Owner { get; protected set; }
@@ -15,7 +17,10 @@ public abstract class AbilitiesBase
     private float lastCastTime = float.NegativeInfinity;
 
     // --- Resource Type ---
-    public ResourceType ResourceType { get; protected set; }
+    [Header("Resource")]
+    [SerializeField] string resourceName;
+    private ResourceType cashedResource;
+    private bool resourceInitialized = false;
 
     // --- Properties ---
     public int CurrentLevel => currentLevel;
@@ -32,7 +37,75 @@ public abstract class AbilitiesBase
         Owner = owner;
         cooldownsPerLevel = cooldowns;
         costsPerLevel = costs;
-        ResourceType = resourceType;
+        cashedResource = resourceType;
+    }
+
+    // --- Private Methods ---
+    private void InitializeResource()
+    {
+        if (resourceInitialized) return;
+        
+        switch (resourceName.ToLower())
+        {
+            case "": 
+                cashedResource = ResourceType.None;
+                break;
+            case "HP": 
+                cashedResource = ResourceType.HP;
+                break;
+            case "Energy": 
+                cashedResource = ResourceType.Energy;
+                break;
+            case "Mana": 
+                cashedResource = ResourceType.Mana;
+                break;
+            case "Fury":  
+                cashedResource = ResourceType.Fury;
+                break;
+            case "Anger":
+                cashedResource = ResourceType.Anger;
+                break;
+            case "Shield":
+                cashedResource = ResourceType.Shield;
+                break;
+            case "Ferocity":
+                cashedResource = ResourceType.Ferocity;
+                break;
+            case "Flow":
+                cashedResource = ResourceType.Flow;
+                break;
+            case "BloodWell":
+                cashedResource = ResourceType.BloodWell;
+                break;
+            case "Frenzy":
+                cashedResource = ResourceType.Frenzy;
+                break;
+            case "Heat":
+                cashedResource = ResourceType.Heat;
+                break;
+            case "Grit":
+                cashedResource = ResourceType.Grit;
+                break;
+            case "Style":
+                cashedResource = ResourceType.Style;
+                break;
+            case "Moonlight":
+                cashedResource = ResourceType.Moonlight;
+                break;
+            case "Ammo":
+                cashedResource = ResourceType.Ammo;
+                break;
+            case "Countdown":
+                cashedResource = ResourceType.Countdown;
+                break;
+            case "Step":
+                cashedResource = ResourceType.Step;
+                break;
+            case "Custom":
+                cashedResource = ResourceType.Custom;
+                break;
+        }
+        resourceInitialized = true;
     }
 
     // --- Public Methods ---
@@ -59,14 +132,14 @@ public abstract class AbilitiesBase
             return;
         }
 
-        if (!Owner.HasEnoughResource(ResourceType, Cost))
+        if (!Owner.HasEnoughResource(cashedResource, Cost))
         {
-            Debug.Log($"Not enough {ResourceType} to cast {AbilityName}.");
+            Debug.Log($"Not enough {cashedResource} to cast {AbilityName}.");
             return;
         }
 
         // Pay cost
-        Owner.SpendResource(ResourceType, Cost);
+        Owner.SpendResource(cashedResource, Cost);
 
         // Perform ability logic
         Cast();
@@ -75,6 +148,17 @@ public abstract class AbilitiesBase
         lastCastTime = Time.time;
     }
 
+    public bool HasEnoughResource()
+    {
+        InitializeResource();
+        return Owner.HasEnoughResource(cashedResource, Cost);
+    }
+
+    public void SpendResource()
+    {
+        InitializeResource();
+        Owner.SpendResource(cashedResource,Cost);
+    }
     // --- Abstract method ---
     public abstract void Cast();
 }

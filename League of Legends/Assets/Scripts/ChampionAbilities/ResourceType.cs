@@ -3,6 +3,7 @@ using UnityEngine;
 public enum ResourceType
 {
     None, // no cost
+    HP, // vlad
     Mana, // standard
     Energy, // usually ninja-like champ
     Fury,// Reneton, Shyvana

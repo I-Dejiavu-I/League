@@ -14,8 +14,6 @@ public class Champion : MonoBehaviour
     // --- Buff Manager ---
     public BuffManager Buffs { get; private set; }
 
-
-
     // --- Resources ---
     public float CurrentHP { get; set; }
     public float CurrentMana { get; set; }
@@ -92,7 +90,7 @@ public class Champion : MonoBehaviour
         // --- Frenzy Decay ---
         if (CurrentFrenzy > 0)
         {
-            
+            // decay logic handled elsewhere
         }
 
         // --- Auto death transition ---
@@ -141,140 +139,138 @@ public class Champion : MonoBehaviour
         StateMachine.Change(States.DEADSTATE);
     }
 
+    public bool HasEnoughResource(ResourceType resourceType, float cost)
+    {
+        switch (resourceType)
+        {
+            case ResourceType.None:
+                return true;
+            
+            case ResourceType.Mana:
+                return CurrentMana >= cost;
+            
+            case ResourceType.Energy:
+                return CurrentEnergy >= cost;
+            
+            case ResourceType.Fury:
+                return CurrentFury >= cost;
+            
+            case ResourceType.Shield:
+                return CurrentShield >= cost;
+            
+            case ResourceType.Ferocity:
+                return CurrentFerocity >= cost;
+            
+            case ResourceType.Flow:
+                return CurrentFlow >= cost;
+            
+            case ResourceType.BloodWell:
+                return CurrentBloodWell >= cost;
+            
+            case ResourceType.Frenzy:
+                return CurrentHP > cost;
+            
+            case ResourceType.Heat:
+                return (CurrentHeat + cost) <= MaxHeat;
+            
+            case ResourceType.Style:
+                return CurrentStyle >= cost;
+            
+            case ResourceType.Moonlight:
+                return CurrentMoonlight >= cost;
+            
+            case ResourceType.Ammo:
+                return CurrentAmmo >= cost;
+            
+            case ResourceType.Countdown:
+                return CurrentCountdown >= cost;
+            
+            case ResourceType.Step:
+                return CurrentStep >= cost;
+            
+            case ResourceType.Custom:
+                return HasCustomResource(cost);
+
+            default:
+                return true;
+        }
+    }
+
+    public void SpendResource(ResourceType resourceType, float cost)
+    {
+        switch (resourceType)
+        {
+            case ResourceType.None: 
+                break;
+            
+            case ResourceType.Mana: 
+                CurrentMana -= cost; 
+                break;
+            
+            case ResourceType.Energy: 
+                CurrentEnergy -= cost; 
+                break;
+            
+            case ResourceType.Fury: 
+                CurrentFury -= cost; 
+                break;
+            
+            case ResourceType.Shield: 
+                CurrentShield -= cost; 
+                break;
+            
+            case ResourceType.Ferocity: 
+                CurrentFerocity -= cost; 
+                break;
+            
+            case ResourceType.Flow: 
+                CurrentFlow -= cost; 
+                break;
+            
+            case ResourceType.BloodWell: 
+                CurrentBloodWell -= cost; 
+                break;
+            
+            case ResourceType.Frenzy: 
+                TakeDamage(cost); 
+                break;
+            
+            case ResourceType.Heat: 
+                CurrentHeat += cost; 
+                if (CurrentHeat > MaxHeat) CurrentHeat = MaxHeat; 
+                break;
+            
+            case ResourceType.Style: 
+                CurrentStyle -= cost; 
+                break;
+            
+            case ResourceType.Moonlight: 
+                CurrentMoonlight -= cost; 
+                break;
+            
+            case ResourceType.Ammo: 
+                CurrentAmmo -= cost; 
+                break;
+            
+            case ResourceType.Countdown: 
+                CurrentCountdown -= cost; 
+                break;
+            
+            case ResourceType.Step: 
+                CurrentStep -= cost; 
+                break;
+            
+            case ResourceType.Custom: 
+                SpendCustomResource(cost); 
+                break;
+        }
+    }
+
     // --- Frenzy Gain (Briar autos) ---
     public void GainFrenzy(float amount)
     {
         CurrentFrenzy += amount;
         if (CurrentFrenzy > MaxFrenzy) CurrentFrenzy = MaxFrenzy;
-    }
-
-    // --- Resource Handling ---
-    public bool HasEnoughResource(ResourceType type, float cost)
-    {
-        switch (type)
-        {
-            case ResourceType.None: 
-                return true;
-
-            case ResourceType.Mana: 
-                return CurrentMana >= cost;
-
-            case ResourceType.Energy: 
-                return CurrentEnergy >= cost;
-
-            case ResourceType.Fury: 
-                return CurrentFury >= cost;
-
-            case ResourceType.Shield: 
-                return CurrentShield >= cost;
-
-            case ResourceType.Ferocity: 
-                return CurrentFerocity >= cost;
-
-            case ResourceType.Flow: 
-                return CurrentFlow >= cost;
-
-            case ResourceType.BloodWell: 
-                return CurrentBloodWell >= cost;
-
-            case ResourceType.Frenzy: 
-                return CurrentHP > cost;
-
-            case ResourceType.Heat: 
-                return (CurrentHeat + cost) <= MaxHeat;
-
-            case ResourceType.Style: 
-                return CurrentStyle >= cost;
-
-            case ResourceType.Moonlight:
-                return CurrentMoonlight >= cost;
-
-            case ResourceType.Ammo:
-                return CurrentAmmo >= cost;
-
-            case ResourceType.Countdown: 
-                return CurrentCountdown >= cost;
-
-            case ResourceType.Step: 
-                return CurrentStep >= cost;
-
-            case ResourceType.Custom: 
-                return HasCustomResource(cost);
-
-            default: 
-                return true;
-
-        }
-    }
-
-    public void SpendResource(ResourceType type, float cost)
-    {
-        switch (type)
-        {
-            case ResourceType.None: 
-                break;
-
-            case ResourceType.Mana: 
-                CurrentMana -= cost; 
-                break;
-
-            case ResourceType.Energy: 
-                CurrentEnergy -= cost; 
-                break;
-
-            case ResourceType.Fury: 
-                CurrentFury -= cost; 
-                break;
-
-            case ResourceType.Shield: 
-                CurrentShield -= cost; 
-                break;
-
-            case ResourceType.Ferocity: 
-                CurrentFerocity -= cost; 
-                break;
-
-            case ResourceType.Flow: 
-                CurrentFlow -= cost; 
-                break;
-
-            case ResourceType.BloodWell: 
-                CurrentBloodWell -= cost; 
-                break;
-
-            case ResourceType.Frenzy: 
-                TakeDamage(cost); 
-                break;
-
-            case ResourceType.Heat:
-                CurrentHeat += cost;
-                if (CurrentHeat > MaxHeat) CurrentHeat = MaxHeat;
-                break;
-
-            case ResourceType.Style: 
-                CurrentStyle -= cost; 
-                break;
-
-            case ResourceType.Moonlight: 
-                CurrentMoonlight -= cost; 
-                break;
-
-            case ResourceType.Ammo: 
-                CurrentAmmo -= cost; 
-                break;
-
-            case ResourceType.Countdown: 
-                CurrentCountdown -= cost; 
-                break;
-
-            case ResourceType.Step: 
-                CurrentStep -= cost; 
-                break;
-
-            case ResourceType.Custom: 
-                SpendCustomResource(cost); 
-                break;
-        }
     }
 
     // --- Custom Resource Hooks ---

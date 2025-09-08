@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BuffManager
@@ -15,6 +16,13 @@ public class BuffManager
 
     public void AddBuff(BuffBase buff)
     {
+        var existing = activeBuffs.FirstOrDefault(b => b.GetType() == buff.GetType());
+        if (existing != null)
+        {
+            existing.OnExpire();
+            activeBuffs.Remove(existing); // To refersh already applyed buffs
+        }
+
         buff.OnApply();
         activeBuffs.Add(buff);
     }

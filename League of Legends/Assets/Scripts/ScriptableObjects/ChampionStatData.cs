@@ -10,6 +10,7 @@ public class ChampionStatData : ScriptableObject
     public float BaseHPRegen; // Level 1
     public float CurrentHPRegen;
     public float CurrentHP;
+    public float MaxHP;
 
     // --- Armor ---
     [Header("Armor")]

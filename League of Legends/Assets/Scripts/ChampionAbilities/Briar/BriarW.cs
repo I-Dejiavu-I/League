@@ -14,6 +14,5 @@ public class BriarW : AbilitiesBase
         Debug.Log($"{Owner.name} casts {AbilityName}!");
 
         // Resource dacaying while active
-        Owner
     }
 }
