@@ -148,6 +148,9 @@ public class Champion : MonoBehaviour
             
             case ResourceType.Mana:
                 return CurrentMana >= cost;
+
+            case ResourceType.HP:
+                return CurrentHP >= cost;
             
             case ResourceType.Energy:
                 return CurrentEnergy >= cost;
@@ -205,6 +208,10 @@ public class Champion : MonoBehaviour
             
             case ResourceType.Mana: 
                 CurrentMana -= cost; 
+                break;
+
+            case ResourceType.HP:
+                CurrentHP -= cost;
                 break;
             
             case ResourceType.Energy: 

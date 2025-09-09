@@ -20,7 +20,7 @@ public class BuffManager
         if (existing != null)
         {
             existing.OnExpire();
-            activeBuffs.Remove(existing); // To refersh already applyed buffs
+            activeBuffs.Remove(existing); // To referesh already applied buffs
         }
 
         buff.OnApply();
