@@ -5,14 +5,16 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - BlueSide
+  - RedSide
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - highlight
   - Water
   - UI
-  - 
+  - Unit
   - 
   - 
   - 
