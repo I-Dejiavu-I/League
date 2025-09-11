@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -6,6 +7,16 @@ public class Champion : MonoBehaviour
 {
     [Header("Champion Data")]
     [SerializeField] private ChampionStatData statData;
+
+    // --- CHampionStat ---
+    [SerializeField] public float AttackRange = 5f;
+    [SerializeField] public float AttackDamage = 50f;
+    [SerializeField] public float AttackSpeed = 1f;
+    [SerializeField] public bool isMelee;
+    [SerializeField] public GameObject AttackProjectilePrefab;
+
+    // --- AutoAttack Controller ---
+    public AutoAttackController autoAttackController { get; private set; }
 
     // --- Core State Machine ---
     public CoreChampionStateMachine StateMachine { get; private set; }
@@ -76,6 +87,7 @@ public class Champion : MonoBehaviour
         // State machine
         StateMachine = new CoreChampionStateMachine();
         States = new CoreChampionStateCollection(GetComponent<PlayerGeneral>(), StateMachine);
+        autoAttackController = new AutoAttackController(this);
     }
 
     private void Start()
@@ -86,20 +98,8 @@ public class Champion : MonoBehaviour
     private void Update()
     {
         Buffs.UpdateBuffs();
-
-        // --- Frenzy Decay ---
-        if (CurrentFrenzy > 0)
-        {
-            // decay logic handled elsewhere
-        }
-
-        // --- Auto death transition ---
-        if (IsDead && !(StateMachine.state is StateDead))
-        {
-            StateMachine.Change(States.DEADSTATE);
-        }
-
         StateMachine.state.Update();
+        autoAttackController.Update();
     }
 
     private void FixedUpdate()
@@ -271,13 +271,6 @@ public class Champion : MonoBehaviour
                 SpendCustomResource(cost); 
                 break;
         }
-    }
-
-    // --- Frenzy Gain (Briar autos) ---
-    public void GainFrenzy(float amount)
-    {
-        CurrentFrenzy += amount;
-        if (CurrentFrenzy > MaxFrenzy) CurrentFrenzy = MaxFrenzy;
     }
 
     // --- Custom Resource Hooks ---
