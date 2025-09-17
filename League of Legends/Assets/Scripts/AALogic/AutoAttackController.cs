@@ -54,7 +54,7 @@ public class AutoAttackController
 
     private void TryAutoAttack()
     {
-        if (Time.time > lastAttackTime + 1f / owner.AttackSpeed)
+        if (Time.time > lastAttackTime + 1f / owner.attackSpeed)
             return;
 
         if (currentTarget == null || currentTarget.IsDead)
@@ -74,8 +74,8 @@ public class AutoAttackController
 
     private void PerformMeleeAttack()
     {
-        Debug.Log($"{owner.name} hits {currentTarget.name} for {owner.AttackDamage} Damage");
-        currentTarget.TakeDamage(owner.AttackDamage);
+        Debug.Log($"{owner.name} hits {currentTarget.name} for {owner.currentAttackDamage} Damage");
+        currentTarget.TakeDamage(owner.currentAttackDamage);
     }
 
     private void PerformRangedAttack()
@@ -86,6 +86,6 @@ public class AutoAttackController
         GameObject proj = GameObject.Instantiate(owner.AttackProjectilePrefab, owner.transform.position + Vector3.up, Quaternion.identity);
 
         Projectile projectile = proj.GetComponent<Projectile> ();
-        projectile.Initialize(owner, currentTarget, owner.AttackDamage);
+        projectile.Initialize(owner, currentTarget, owner.currentAttackDamage);
     }
 }

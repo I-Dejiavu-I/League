@@ -10,7 +10,7 @@ public class AttackRange : MonoBehaviour
         owner = GetComponentInParent<Champion>();
         collider = GetComponent<SphereCollider>();
         collider.isTrigger = true;
-        collider.radius = owner.AttackRange;
+        collider.radius = owner.attackRange;
     }
 
     private void OnTriggerEnter(Collider other)
