@@ -30,7 +30,7 @@ public class ChampionStatData : ScriptableObject
     public float BaseCritDamage;
     public float CritRateCap; // max 100%
 
-    // --- Attack Power ---
+    // --- Ability Power ---
     [Header("AP")]
     public float BaseAP;
     public float APGrowth;
@@ -84,7 +84,7 @@ public class ChampionStatData : ScriptableObject
     public float BaseShield; // Level 1
     public float ShieldGrowth;
     public float BaseShieldRegen;
-    public float tShieldGrowth;
+    public float ShieldRegenGrowth;
 
     // --- Ferocity ---
     [Header("Ferocity")]
@@ -109,7 +109,7 @@ public class ChampionStatData : ScriptableObject
 
     // --- Frenzy ---
     [Header("Frenzy")]
-    public float Basefrenzy; // Level 1
+    public float BaseFrenzy; // Level 1
     public float FrenzyGrowth;
     public float BaseFrenzyRegen; // Level 1
     public float FrenzyRegenGrowth;
@@ -135,12 +135,12 @@ public class ChampionStatData : ScriptableObject
     public float BaseStyleRegen; // Level 1
     public float StyleRegenGrowth;
 
-    // --- MoonLight ---
-    [Header("MoonLight")]
-    public float baseMoonLight; // Level 1
-    public float MoonLightGrowth;
-    public float BaseMoonLightRegen; // Level 1
-    public float MoonLightRegenGrowth;
+    // --- Moonlight ---
+    [Header("Moonlight")]
+    public float BaseMoonlight; // Level 1
+    public float MoonlightGrowth;
+    public float BaseMoonlightRegen; // Level 1
+    public float MoonlightRegenGrowth;
 
     // --- Ammo ---
     [Header("Ammo")]
@@ -152,7 +152,7 @@ public class ChampionStatData : ScriptableObject
     // --- Countdown ---
     [Header("Countdown")]
     public float BaseCountdown; // Level 1
-    public float CountDownGrowth;
+    public float CountdownGrowth;
     public float BaseCountdownRegen; // Level 1
     public float CountdownRegenGrowth;
 

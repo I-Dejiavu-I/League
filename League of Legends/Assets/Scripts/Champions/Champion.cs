@@ -9,52 +9,52 @@ public class Champion : MonoBehaviour
     [Header("Champion Data")]
     [SerializeField] private ChampionStatData statData;
 
-    // --- CHampionStat ---
+    // --- Champion Stat ---
     // Level
-    [SerializeField] int currentChampionLevel;
+    [SerializeField] public int currentChampionLevel;
     // HP
     [Header("HP")]
-    [SerializeField] float bonusHP;
+    [SerializeField] public float bonusHP;
     private float currentLevelBaseHP;
     private float maxHP;
-    [SerializeField] float bonusHPRegen;
+    [SerializeField] public float bonusHPRegen;
     private float currentLevelBaseHPRegen;
     private float maxHPRegen;
     // Armor
     [Header("AR")]
-    [SerializeField] float bonusAR;
+    [SerializeField] public float bonusAR;
     private float maxAR;
     private float currentLevelBaseAR;
     // Magic Res
     [Header("MR")]
-    [SerializeField] float bonusMR;
+    [SerializeField] public float bonusMR;
     private float currentLevelBaseMR;
     private float maxMR;
     // Attack Damage
     [Header("AD")]
-    [SerializeField] float bonusAD;
+    [SerializeField] public float bonusAD;
     private float currentLevelBaseAD;
     private float maxAD;
     // Ability Power
     [Header("AP")]
-    [SerializeField] float bonusAP;
+    [SerializeField] public float bonusAP;
     private float currentLevelBaseAP;
     private float maxAP;
     // Attack Speed
     [Header("AS")]
-    [SerializeField] float bonusAS;
+    [SerializeField] public float bonusAS;
     private float currentLevelBaseAS;
     private float maxAS;
     // Attack Range
     [Header("Attack Range")]
-    [SerializeField] float attackRange = 0;
+    [SerializeField] public float attackRange = 0;
     // Crit Rate
     [Header("Crit Rate")]
-    [SerializeField] float bonusCritRate;
+    [SerializeField] public float bonusCritRate;
     private float maxCritRate;
     // Crit Damage
     [Header("Crit Damage")]
-    [SerializeField] float bonusCritDamage;
+    [SerializeField] public float bonusCritDamage;
     private float maxCritDamage;
     // Melee / Ranged
     [Header("Melee / Ranged")]
@@ -64,119 +64,142 @@ public class Champion : MonoBehaviour
     [SerializeField] GameObject AttackProjectilePrefab;
     // Cooldown Reduction
     [Header("CD")]
-    [SerializeField] float bonusCD;
+    [SerializeField] public float bonusCD;
     private float currentLevelBaseCD;
     private float maxCD;
     // Movement Speed
     [Header("MS")]
-    [SerializeField] float bonusMS = 0;
+    [SerializeField] public float bonusMS;
     private float maxMS;
     // Mana
     [Header("Mana")]
-    [SerializeField] float bonusMana = 0;
-    private float currentLevelBaseMana = 0;
+    [SerializeField] public float bonusMana;
+    private float currentLevelBaseMana;
     private float maxMana;
-    [SerializeField] float bonusManaRegen = 0;
-    private float currentLevelBaseManaRegen = 0;
+    [SerializeField] public float bonusManaRegen;
+    private float currentLevelBaseManaRegen;
     private float maxManaRegen;
     // Energy
     [Header("Energy")]
-    [SerializeField] float bonusEnergy = 0;
-    private float currentLevelBaseEnergy = 0;
+    [SerializeField] public float bonusEnergy;
+    private float currentLevelBaseEnergy;
     private float maxEnergy;
-    [SerializeField] float bonusEnergyRegen = 0;
-    private float currentLevelBaseEnergyRegen = 0;
+    [SerializeField] public float bonusEnergyRegen;
+    private float currentLevelBaseEnergyRegen;
     private float maxEnergyRegen;
     // Anger
     [Header("Anger")]
-    [SerializeField] float bonusAnger = 0;
-    private float currentLevelBaseAnger = 0;
+    [SerializeField] public float bonusAnger;
+    private float currentLevelBaseAnger;
     private float maxAnger;
-    [SerializeField] float bonusAngerRegen = 0;
-    private float currentLevelBaseAngerRegen = 0;
+    [SerializeField] public float bonusAngerRegen;
+    private float currentLevelBaseAngerRegen;
     private float maxAngerRegen;
     // Shield
     [Header("Shield")]
-    [SerializeField] float bonusShield = 0;
-    private float currentLevelBaseShield = 0;
-    [SerializeField] float bonusShieldRegen = 0;
-    private float currentLevelBaseShieldRegen = 0;
+    [SerializeField] public float bonusShield;
+    private float currentLevelBaseShield;
+    private float maxShield;
+    [SerializeField] public float bonusShieldRegen;
+    private float currentLevelBaseShieldRegen;
+    private float maxShieldRegen;
     // Ferocity
     [Header("Ferocity")]
-    [SerializeField] float bonusFerocity = 0;
-    private float currentLevelBaseFerocity = 0;
-    [SerializeField] float bonusFerocityRegen = 0;
-    private float currentLevelBaseFerocityRegen = 0;
+    [SerializeField] public float bonusFerocity;
+    private float currentLevelBaseFerocity;
+    private float maxFerocity;
+    [SerializeField] public float bonusFerocityRegen;
+    private float currentLevelBaseFerocityRegen;
+    private float maxFerocityRegen;
     // Flow
     [Header("Flow")]
-    [SerializeField] float bonusFlow = 0;
-    private float currentLevelBaseFlow = 0;
-    [SerializeField] float bonusFlowRegen = 0;
-    private float currentLevelBaseFlowRegen = 0;
+    [SerializeField] public float bonusFlow;
+    private float currentLevelBaseFlow;
+    private float maxFlow;
+    [SerializeField] public float bonusFlowRegen;
+    private float currentLevelBaseFlowRegen;
+    private float maxFlowRegen;
     // BloodWell
     [Header("BloodWell")]
-    [SerializeField] float bonusBloodWell = 0;
-    private float currentLevelBaseBloodWell = 0;
-    [SerializeField] float bonusBloodWellRegen = 0;
-    private float currentLevelBaseBloodWellRegen = 0;
+    [SerializeField] public float bonusBloodWell;
+    private float currentLevelBaseBloodWell;
+    private float maxBloodWell;
+    [SerializeField] public float bonusBloodWellRegen;
+    private float currentLevelBaseBloodWellRegen;
+    private float maxBloodWellRegen;
     // Frenzy
     [Header("Frenzy")]
-    [SerializeField] float bonusFrenzy = 0;
-    private float currentLevelBaseFrenzy = 0;
-    [SerializeField] float bonusFrenzyRegen = 0;
-    private float currentLevelBaseFrenzyRegen = 0;
+    [SerializeField] public float bonusFrenzy;
+    private float currentLevelBaseFrenzy;
+    private float maxFrenzy;
+    [SerializeField] public float bonusFrenzyRegen;
+    private float currentLevelBaseFrenzyRegen;
+    private float maxFrenzyRegen;
     // Heat
     [Header("Head")]
-    [SerializeField] float bonusHeat = 0;
-    private float currentLevelBaseHeat = 0;
-    [SerializeField] float bonusHeatRegen = 0;
-    private float currentLevelBaseHeatRegen = 0;
+    [SerializeField] public float bonusHeat;
+    private float currentLevelBaseHeat;
+    private float maxHeat;
+    [SerializeField] public float bonusHeatRegen;
+    private float currentLevelBaseHeatRegen;
+    private float maxHeatRegen;
     // Grit
     [Header("Grit")]
-    [SerializeField] float bonusGrit = 0;
-    private float currentLevelBaseGrit = 0;
-    [SerializeField] float bonusGritRegen = 0;
-    private float currentLevelBaseGritRegen = 0;
+    [SerializeField] public float bonusGrit;
+    private float currentLevelBaseGrit;
+    private float maxGrit;
+    [SerializeField] public float bonusGritRegen;
+    private float currentLevelBaseGritRegen;
+    private float maxGritRegen;
     // Style
     [Header("Style")]
-    [SerializeField] float bonusStyle = 0;
-    private float currentLevelBaseStyle = 0;
-    [SerializeField] float bonusStyleRegen = 0;
-    private float currentLevelBaseStyleRegen = 0;
+    [SerializeField] public float bonusStyle;
+    private float currentLevelBaseStyle;
+    private float maxStyle;
+    [SerializeField] public float bonusStyleRegen;
+    private float currentLevelBaseStyleRegen;
+    private float maxStyleRegen;
     // Moonlight
     [Header("Moonlight")]
-    [SerializeField] float bonusMoonlight = 0;
-    private float currentLevelBaseMoonlight = 0;
-    [SerializeField] float bonusMoonlightRegen = 0;
-    private float currentLevelBaseMoonlightRegen = 0;
+    [SerializeField] public float bonusMoonlight;
+    private float currentLevelBaseMoonlight;
+    private float maxMoonlight;
+    [SerializeField] public float bonusMoonlightRegen;
+    private float currentLevelBaseMoonlightRegen;
+    private float maxMoonlightRegen;
     // Ammo
     [Header("Ammo")]
-    [SerializeField] float bonusAmmo = 0;
-    private float currentLevelBaseAmmo = 0;
-    [SerializeField] float bonusAmmoRegen = 0;
-    private float currentLevelBaseAmmoRegen = 0;
+    [SerializeField] public float bonusAmmo;
+    private float currentLevelBaseAmmo;
+    private float maxAmmo;
+    [SerializeField] public float bonusAmmoRegen;
+    private float currentLevelBaseAmmoRegen;
+    private float maxAmmoRegen;
     // Countdown
     [Header("CD")]
-    [SerializeField] float bonusCooldown = 0;
-    private float currentLevelBaseCooldown = 0;
-    [SerializeField] float bonusCooldownRegen = 0;
-    private float currentLevelBaseCooldownRegen = 0;
+    [SerializeField] public float bonusCooldown;
+    private float currentLevelBaseCooldown;
+    private float maxCooldown;
+    [SerializeField] public float bonusCooldownRegen;
+    private float currentLevelBaseCooldownRegen;
+    private float maxCooldownRegen;
     // Step - like
     [Header("Step")]
-    [SerializeField] float bonusStep = 0;
-    private float currentLevelBaseStep = 0;
-    [SerializeField] float bonusStepRegen = 0;
-    private float currentLevelBaseStepRegen = 0;
-
-    // --- AutoAttack Controller ---
-    public AutoAttackController autoAttackController { get; private set; }
+    [SerializeField] public float bonusStep;
+    private float currentLevelBaseStep;
+    private float maxStep;
+    [SerializeField] public float bonusStepRegen;
+    private float currentLevelBaseStepRegen;
+    private float maxStepRegen;
 
     // --- Core State Machine ---
-    public CoreChampionStateMachine StateMachine { get; private set; }
-    public CoreChampionStateCollection States { get; private set; }
+    public CoreChampionStateMachine stateMachine { get; private set; }
+    public CoreChampionStateCollection states { get; private set; }
+
+    public AutoAttackHandler autoAttackHandler { get; private set; }
 
     // --- Buff Manager ---
-    public BuffManager Buffs { get; private set; }
+    public BuffManager buffs { get; private set; }
 
     // --- Resources ---
     public float CurrentHP { get; set; }
@@ -285,58 +308,172 @@ public class Champion : MonoBehaviour
     }
 
     // --- Anger Checker ---
-    public void MaxAngerCheck()
+    public void MaxAngerCheck() // to be called every time an item is bought
     {
         currentLevelBaseAnger = statData.BaseAnger + statData.AngerGrowth * currentChampionLevel;
         currentLevelBaseAngerRegen = statData.BaseAngerRegen + statData.AngerRegenGrowth *currentChampionLevel;
         maxAnger = currentLevelBaseAnger + bonusAnger;
         maxAngerRegen = currentLevelBaseAngerRegen + bonusAngerRegen;
     }
-    
+
+    // --- Shield Checker ---
+    public void MaxShieldCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseShield = statData.BaseShield + statData.ShieldGrowth * currentChampionLevel;
+        currentLevelBaseShieldRegen = statData.BaseShieldRegen + statData.ShieldRegenGrowth * currentChampionLevel;
+        maxShield = currentLevelBaseShield + bonusShield;
+        maxShieldRegen = currentLevelBaseShieldRegen + bonusShieldRegen;
+    }
+
+    // --- Ferocity Checker ---
+    public void MaxFerocityCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseFerocity = statData.BaseFerocity + statData.FerocityGrowth * currentChampionLevel;
+        currentLevelBaseFerocityRegen = statData.BaseFerocityRegen + statData.FerocityRegenGrowth * currentChampionLevel;
+        maxFerocity = currentLevelBaseFerocity + bonusFerocity;
+        maxFerocityRegen = currentLevelBaseFerocityRegen + bonusFerocityRegen;
+    }
+
+    // --- Flow Checker ---
+    public void MaxFlowCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseFlow = statData.BaseFlow + statData.FlowGrowth * currentChampionLevel;
+        currentLevelBaseFlowRegen = statData.BaseFlowRegen + statData.FlowRegenGrowth * currentChampionLevel;
+        maxFlow = currentLevelBaseFlow + bonusFlow;
+        maxFlowRegen = currentLevelBaseFlowRegen + bonusFlowRegen;
+    }
+
+    // --- BloodWell Checker ---
+    public void MaxBloodWellCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseBloodWell = statData.BaseBloodWell + statData.BloodWellGrowth * currentChampionLevel;
+        currentLevelBaseBloodWellRegen = statData.BaseBloodWellRegen + statData.BloodWellRegenGrowth * currentChampionLevel;
+        maxBloodWell = currentLevelBaseBloodWell + bonusBloodWell;
+        maxBloodWellRegen = currentLevelBaseBloodWellRegen + bonusBloodWellRegen;
+    }
+
+    // --- Frenzy Checker ---
+    public void MaxFrenzyCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseFrenzy = statData.BaseFrenzy + statData.FrenzyGrowth * currentChampionLevel;
+        currentLevelBaseFrenzyRegen = statData.BaseFrenzyRegen + statData.FrenzyRegenGrowth * currentChampionLevel;
+        maxFrenzy = currentLevelBaseFrenzy + bonusFrenzy;
+        maxFrenzyRegen = currentLevelBaseFrenzyRegen + bonusFrenzyRegen;
+    }
+
+    // --- Heat Checker ---
+    public void MaxHeatCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseHeat = statData.BaseHeat + statData.HeatGrowth * currentChampionLevel;
+        currentLevelBaseHeatRegen = statData.BaseHeatRegen + statData.HeatRegenGrowth * currentChampionLevel;
+        maxHeat = currentLevelBaseHeat + bonusHeat;
+        maxHeatRegen = currentLevelBaseHeatRegen + bonusHeatRegen;
+    }
+
+    // --- Grit Checker ---
+    public void MaxGritCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseGrit = statData.BaseGrit + statData.GritGrowth * currentChampionLevel;
+        currentLevelBaseGritRegen = statData.BaseGritRegen + statData.GritRegenGrowth * currentChampionLevel;
+        maxGrit = currentLevelBaseGrit + bonusGrit;
+        maxGritRegen = currentLevelBaseGritRegen + bonusGritRegen;
+    }
+
+    // --- Style Checker ---
+    public void MaxStyleCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseStyle = statData.BaseStyle + statData.StyleGrowth * currentChampionLevel;
+        currentLevelBaseStyleRegen = statData.BaseStyleRegen + statData.StyleRegenGrowth * currentChampionLevel;
+        maxStyle = currentLevelBaseStyle + bonusStyle;
+        maxStyleRegen = currentLevelBaseStyleRegen + bonusStyleRegen;
+    }
+
+    // --- Moonlight Checker ---
+    public void MaxMoonlightCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseMoonlight = statData.BaseMoonlight + statData.MoonlightGrowth * currentChampionLevel;
+        currentLevelBaseMoonlightRegen = statData.BaseMoonlightRegen + statData.MoonlightRegenGrowth * currentChampionLevel;
+        maxMoonlight = currentLevelBaseMoonlight + bonusMoonlight;
+        maxMoonlightRegen = currentLevelBaseMoonlightRegen + bonusMoonlightRegen;
+    }
+
+    // --- Ammo Checker ---
+    public void MaxAmmoCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseAmmo = statData.BaseAmmo + statData.AmmoGrowth * currentChampionLevel;
+        currentLevelBaseAmmoRegen = statData.BaseAmmoRegen + statData.AmmoRegenGrowth * currentChampionLevel;
+        maxAmmo = currentLevelBaseAmmo + bonusAmmo;
+        maxAmmoRegen = currentLevelBaseAmmoRegen + bonusAmmoRegen;
+    }
+
+    // --- Countdown Checker ---
+    public void MaxCountdownCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseCooldown = statData.BaseCountdown + statData.CountdownGrowth * currentChampionLevel;
+        currentLevelBaseCooldownRegen = statData.BaseCountdownRegen + statData.CountdownRegenGrowth * currentChampionLevel;
+        maxCooldown = currentLevelBaseCooldown + bonusCooldown;
+        maxCooldownRegen = currentLevelBaseCooldownRegen + bonusCooldownRegen;
+    }
+
+    // --- Step Checker ---
+    public void MaxStepCheck() // to be called every time an item is bought
+    {
+        currentLevelBaseStep = statData.BaseStep + statData.StepGrowth * currentChampionLevel;
+        currentLevelBaseStepRegen = statData.BaseStepRegen + statData.StepRegenGrowth * currentChampionLevel;
+        maxStep = currentLevelBaseStep + bonusStep;
+        maxStepRegen = currentLevelBaseStepRegen + bonusStepRegen;
+    }
+
+    // --- Auto Attack Needed Stat ---
+    public float GetAD()
+    {
+        return maxAD;
+    }
+
+    public float GetAS()
+    {
+        return maxAS;
+    }
+
     private void Awake()
     {
         // Buff manager
-        Buffs = new BuffManager(this);
+        buffs  = new BuffManager(this);
 
         // State machine
-        StateMachine = new CoreChampionStateMachine();
-        States = new CoreChampionStateCollection(GetComponent<PlayerGeneral>(), StateMachine);
-        autoAttackController = new AutoAttackController(this);
+        stateMachine = new CoreChampionStateMachine();
+        states = new CoreChampionStateCollection(GetComponent<PlayerGeneral>(), stateMachine);
+
+        // AutoAttackHandler
+        autoAttackHandler = new AutoAttackHandler(this, isMelee, AttackProjectilePrefab);
     }
 
     private void Start()
     {
-        StateMachine.Initialize(States.IDLESTATE);
+        stateMachine.Initialize(states.IDLESTATE);
     }
 
     private void Update()
     {
-        Buffs.UpdateBuffs();
-        StateMachine.state.Update();
-        autoAttackController.Update();
+        buffs.UpdateBuffs();
+        stateMachine.state.Update();
+        autoAttackHandler.Update();
     }
 
     private void FixedUpdate()
     {
-        StateMachine.state.FixedUpdate();
+        stateMachine.state.FixedUpdate();
     }
 
     private void LateUpdate()
     {
-        StateMachine.state.LateUpdate();
+        stateMachine.state.LateUpdate();
     }
 
     // --- Combat Methods ---
     public void TakeDamage(float amount)
     {
-        if (IsDead) return;
-
-        CurrentHP -= amount;
-        if (CurrentHP <= 0)
-        {
-            CurrentHP = 0;
-            Die();
-        }
+        
     }
 
     public void Heal(float amount)
@@ -347,7 +484,7 @@ public class Champion : MonoBehaviour
     private void Die()
     {
         Debug.Log($"{gameObject.name} has died.");
-        StateMachine.Change(States.DEADSTATE);
+        stateMachine.Change(states.DEADSTATE);
     }
     /*
     public bool HasEnoughResource(ResourceType resourceType, float cost)
