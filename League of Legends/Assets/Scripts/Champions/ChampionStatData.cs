@@ -46,10 +46,10 @@ public class ChampionStatData : ScriptableObject
     public float ASGrowth;
     public float ASCap;
 
-    // --- Cooldown Reduction ---
+    // --- Ability Haste ---
     [Header("CD")]
-    public float baseCD;
-    public float CDGrowth;
+    public float baseAH;
+    public float AHGrowth;
 
     // --- Mana ---
     [Header("Mana")]

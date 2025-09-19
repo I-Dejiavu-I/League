@@ -35,6 +35,10 @@ public class Champion : MonoBehaviour
     [SerializeField] public float bonusAD;
     private float currentLevelBaseAD;
     private float maxAD;
+    // OnHitPhysicalDamage
+    [SerializeField] private float OnHitPhysicalDamage;
+    // OnHitMagicDamage
+    [SerializeField] private float OnHitMagicDamage;
     // Ability Power
     [Header("AP")]
     [SerializeField] public float bonusAP;
@@ -62,11 +66,14 @@ public class Champion : MonoBehaviour
     // Auto Attack Prefab
     [Header("Ranged Prefab")]
     [SerializeField] GameObject AttackProjectilePrefab;
-    // Cooldown Reduction
+    // Lifesteal
+    [Header("Lifesteal")]
+    [SerializeField] private float lifestealPercentage; // remember to put the float, ex: 0.1f for 10%
+    // Ability Haste
     [Header("CD")]
-    [SerializeField] public float bonusCD;
-    private float currentLevelBaseCD;
-    private float maxCD;
+    [SerializeField] public float bonusAH;
+    private float currentLevelBaseAH;
+    private float maxAH;
     // Movement Speed
     [Header("MS")]
     [SerializeField] public float bonusMS;
@@ -196,6 +203,7 @@ public class Champion : MonoBehaviour
     public CoreChampionStateMachine stateMachine { get; private set; }
     public CoreChampionStateCollection states { get; private set; }
 
+    // --- Auto Attack Handler ---
     public AutoAttackHandler autoAttackHandler { get; private set; }
 
     // --- Buff Manager ---
@@ -277,10 +285,10 @@ public class Champion : MonoBehaviour
     }
 
     // --- CD Checker ---
-    public void MaxCDCheck() // to be called every time an item is bought
+    public void MaxAHCheck() // to be called every time an item is bought
     {
-        currentLevelBaseCD = statData.baseCD + statData.CDGrowth * currentChampionLevel;
-        maxCD = currentLevelBaseCD + bonusCD;
+        currentLevelBaseAH = statData.baseAH + statData.AHGrowth * currentChampionLevel;
+        maxAH = currentLevelBaseAH + bonusAH;
     }
 
     // --- MS Checker ---
@@ -433,6 +441,48 @@ public class Champion : MonoBehaviour
     public float GetAS()
     {
         return maxAS;
+    }
+
+    // --- On Hit ---
+    public float GetOnHItPhysicalDamage()
+    {
+        return OnHitPhysicalDamage;
+    }
+
+    public float GetOnHitMagicDamage()
+    {
+        return OnHitMagicDamage;
+    }
+
+    public void  AddOnHitPhysicalDamage(float amount) // to add form items for example
+    {
+        OnHitPhysicalDamage += amount;
+    }
+
+    public void AddOnHitMagicDamage(float amount)
+    {
+        OnHitMagicDamage += amount;
+    }
+
+    // --- Lifesteal ---
+    public float GetLifestealPercentage()
+    {
+        return lifestealPercentage;
+    }
+
+    public void AddLifestealPercentageOnHIt(float amount) // to add form items for example
+    {
+        lifestealPercentage += amount;
+    }
+
+    public void RemoveLifestealPercentageOnHit(float amount)
+    {
+        lifestealPercentage -= amount;
+
+        if (lifestealPercentage < 0)
+        {
+            lifestealPercentage = 0;
+        }
     }
 
     private void Awake()

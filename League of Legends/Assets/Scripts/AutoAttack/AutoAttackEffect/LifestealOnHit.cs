@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class LifestealOnHit : MonoBehaviour
+public class LifeStealOnHit : IOnHitEffect
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void OnHit(Champion attacker, Champion target, float damageDealt)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        float lifeStealPercent = attacker.GetLifestealPercentage();
+        if (lifeStealPercent > 0)
+        {
+            float healAmount = damageDealt * lifeStealPercent;
+            attacker.Heal(healAmount);
+        }
     }
 }
